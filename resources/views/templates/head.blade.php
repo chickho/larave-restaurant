@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.1/css/dataTables.dateTime.min.css">
     <link rel="stylesheet" href="/css/main.css">
+    <!-- <link rel="stylesheet" href="/css/swiper.css"> -->
 	<style>
 		body {
 			display: none;

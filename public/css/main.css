@@ -40,10 +40,10 @@ body {
     background-position: center;
 }
 .welcomeImg:nth-of-type(1) {
-    background-image: url("/img/warunk_1.png");
+    background-image: url("/img/food1.jpg");
 }
 .welcomeImg:nth-of-type(2) {
-    background-image: url("/img/warunk_2.jpeg");
+    background-image: url("/img/food2.jpeg");
 }
 /* .welcome{
     display: grid;
@@ -71,7 +71,7 @@ body {
 
 .welcomeCards .card .card-img-top {
     height: 80px;
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 .welcomeCards .card .card-title {

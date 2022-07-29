@@ -1,17 +1,18 @@
 body {
-  display: none;
+    display: none;
 }
 .bg-pattern {
 }
 .bg-pattern::before {
-background-image: url(../assets/images/spikes.png);
-background-size: 400px;
-content: "";
-position: absolute;
-top: 0px;
-right: 0px;
-bottom: 0px;
-left: 0px;
-opacity: 0.33;
-background-attachment: fixed;
+    background-image: url(../assets/images/spikes.png);
+    background-size: 400px;
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.33;
+    background-attachment: fixed;
+    filter: blur(8px);
 }

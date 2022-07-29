@@ -10,6 +10,7 @@
 <!-- Tabler Core -->
 <script src="/js/jquery-3.6.0.min.js"></script>
 <script src="/js/tabler.min.js"></script>
+<!-- <script src="/js/swiper.min.js"></script> -->
 <script src="/libs/sweetalert2/js/sweetalert2.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
@@ -58,5 +59,34 @@ document.addEventListener("DOMContentLoaded", function() {
    imgPreview.src = oFREvent.target.result;
   }
  }
+
+ var swiper = new Swiper(".swiper-container", {
+  slidesPerView: 1.5,
+  spaceBetween: 10,
+  centeredSlides: true,
+  freeMode: true,
+  grabCursor: true,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true
+  },
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev"
+  },
+  breakpoints: {
+    500: {
+      slidesPerView: 1
+    },
+    700: {
+      slidesPerView: 1.5
+    }
+  }
+});
 </script>
 @stack('scripts')
