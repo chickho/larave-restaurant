@@ -46,7 +46,7 @@ class PaymentController extends Controller
 	
 			Payment::create($validatedData);
 	
-			return redirect('/payment')->with('success', 'Insert data successfull!');
+			return redirect('/payments')->with('success', 'Insert data successfull!');
     }
 
     /**
@@ -89,7 +89,7 @@ class PaymentController extends Controller
 	
 			Payment::where('id', $payment->id)->update($validatedData);
 	
-			return redirect('/payment')->with('success', 'Data has been updated!');
+			return redirect('/payments')->with('success', 'Data has been updated!');
     }
 
     /**
@@ -102,6 +102,6 @@ class PaymentController extends Controller
     {
       Payment::destroy($payment->id);
 
-			return redirect('/payment')->with('success', 'Data has been deleted!');
+			return redirect('/payments')->with('success', 'Data has been deleted!');
     }
 }
