@@ -72,14 +72,14 @@
 							</table>
 						</div>
 						<br>
-						@can('customer')
+						<!-- @can('customer')
 							<div class="row">
 								<div class="col-2 mb-3">
 									<button type="button" class="btn-modal btn btn-primary w-100" data-toggle="modal" id="idbtn3"
 										data-target="#myModal">Gunakan Voucher</button>
 								</div>
 							</div>
-						@endcan
+						@endcan -->
 						<div class="row">
 							<div class="col-12 mb-3">
 								<label class="form-label">Payment method</label>

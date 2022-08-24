@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\UserVoucherController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------

@@ -24,5 +24,13 @@ class UsersSeeder extends Seeder
             'role' => 'admin',
             'slug' => Str::random(25),
         ]);
+
+        DB::table('payments')->insert([
+            'id' => '1',
+            'name' => 'Cash',
+            'slug' => Str::random(25),
+            'description' => 'Pembayaran dengan uang tunai',
+
+        ]);
     }
 }
