@@ -1,5 +1,4 @@
 @extends('templates.app')
-
 @section('content')
 	<!-- Page title -->
 	<div class="page-header">
@@ -84,7 +83,7 @@
 				<div class="modal-body">
 				</div>
 				<div class="modal-footer">
-					Rp. {{$order->price}}
+					Rp. {{$orders ?? $orders['price']}}
 				</div>
 				
 			</div>

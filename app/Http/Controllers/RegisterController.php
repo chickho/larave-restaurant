@@ -20,13 +20,11 @@ class RegisterController extends Controller
 			'password' => 'required|min:6|max:255',
 		]);
 
-		$validatedData['password'] = bcrypt('password');
+		$validatedData['password'] = bcrypt($request->password);
 		$validatedData['role'] = 'customer';
 		$validatedData['point'] = 0;
 		$validatedData['slug'] = Str::random(25);
-
 		User::create($validatedData);
-
 		return redirect('/login')->with('success', 'Registration successfull!');
 	}
 }

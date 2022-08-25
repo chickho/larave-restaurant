@@ -8,6 +8,15 @@
 		</a>
 		<div class="navbar-nav flex-row order-md-last">
 			@auth
+				<!-- @canany(['customer','guest','tamu'])
+					<div class="flex flex-col sm:flex-row mr-5 text-light mt-2">
+						<a class="mt-3 hover:underline sm:mx-3 sm:mt-3 text-light" href="">Shop</a>
+						<a href="{{ route('cart.list') }}" class="flex items-center text-light">
+							<i class="fas fa-solid fa-cart-arrow-down text-light ml-2"></i>
+							{{ Cart::getTotalQuantity()}}
+						</a>
+					</div>
+				@endcanany -->
 				<div class="nav-item dropdown">
 					<a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-toggle="dropdown">
 						<div class="d-none d-xl-block pl-2">
