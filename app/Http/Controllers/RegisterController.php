@@ -25,7 +25,6 @@ class RegisterController extends Controller
 		$validatedData['point'] = 0;
 		$validatedData['slug'] = Str::random(25);
 		User::create($validatedData);
-
 		return redirect('/login')->with('success', 'Registration successfull!');
 	}
 }
