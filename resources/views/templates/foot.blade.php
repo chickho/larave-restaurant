@@ -23,14 +23,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+
+  let dateData = $('#dateRange').val();
 
     $('#Example').DataTable({
         processing: true,
         stateSave: true,
         order: [],
-        dom: "lBfrtip",
+        dom: "lBfrtip", 
         buttons: ["copy", "csv", "excel", "pdf", "print"],
 
 
@@ -41,6 +46,49 @@ document.addEventListener("DOMContentLoaded", function() {
         responsive: true,
     });
 
+        let minDateFilter = "";
+        let maxDateFilter = "";
+        let table = $.fn.dataTableExt.afnFiltering.push(
+          function(settings, data, dataIndex) {
+            data[7] = new Date(data[7]).getTime();
+            if (typeof data[7] == 'undefined') {
+              data[7] = new Date(data[0]).getTime();
+            }
+              if (minDateFilter && !isNaN(minDateFilter)) {
+                  if (data[7] <= minDateFilter) {
+                      return false;
+                  }
+              }
+
+              if (maxDateFilter && !isNaN(maxDateFilter)) {
+                  if (data[7] >= maxDateFilter) {
+                      return false;
+                  }
+              }
+
+              return true;
+          }
+        )
+
+      $("#dateRange").on('change', function() {
+          dateData = $(this).val();
+          let splitDate = dateData.split("to")
+          minDateFilter = new Date(splitDate[0]).getTime();
+          maxDateFilter =new Date(splitDate[1]).getTime();
+
+          // DataTables initialisation
+          var table = $('#Example').DataTable();
+
+          // Refilter the table
+          $("#dateRange").on('change', function() {
+              table.draw();
+          });
+
+      });
+
+    flatpickr('.range', {
+        mode: "range"
+    });
 });
 </script>
 <script>

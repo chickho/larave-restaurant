@@ -17,7 +17,8 @@ class HistoryController extends Controller
      */
     public function index()
     {
-      return view('pages.history.index', ['orders' => Order::where('user_id', auth()->user()->id)->get()]);
+      $role = auth()->user();
+      return view('pages.history.index', ['orders' => Order::where('user_id', auth()->user()->id)->get(), 'role' => $role->role]);
     }
 
     /**
@@ -50,8 +51,7 @@ class HistoryController extends Controller
     public function show($id)
     {
 			$order = Order::where('slug', $id)->get();
-			$orderDetail = OrderDetail::where('order_id', $order[0]['id'])->with('order')->get();
-      
+      $orderDetail = OrderDetail::where('order_id', $order[0]['id'])->with('order')->get();
       return view('pages.history.show', [
 				'orderDetails' => $orderDetail,
 			]);

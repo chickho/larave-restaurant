@@ -3,11 +3,9 @@
 	<!-- Page title -->
 	<div class="page-header">
 		<div class="row align-items-center">
-			<div class="col-auto">
-				<h2 class="page-title">
-					Order
-				</h2>
-			</div>
+				<h1 class="page-title mt-5 text-center">
+				@if ($users->role == "customer" || $users->role == "guest") Order @else Preview Order @endif
+				</h1>
 		</div>
 	</div>
 	@if (session()->has('success'))
