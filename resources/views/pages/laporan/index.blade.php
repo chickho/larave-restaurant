@@ -44,12 +44,9 @@
 								<tr>
 									<th>No</th>
 									<th>Menu</th>
-									<th>Quantity</th>
-									<th>Status</th>
 									<th>Name Order</th>
-									<th>Email</th>
-									<th>Table</th>
 									<th>Tanggal pemesanan</th>
+									<th>Price</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -58,16 +55,13 @@
 									<tr>
 										<td>{{ $loop->iteration }}</td>
 										<td>{{ $menu->menu->name }}</td>
-										<td>{{ $menu->qty }}</td>
-										<td>{{ $menu->status }}</td>
 										<td>{{ $menu->order->user->name }}</td>
-										<td>{{ $menu->order->user->email }}</td>
-										<td>{{ $menu->order->table->name }}</td>
 										<td>{{ $menu->created_at->format('Y-m-d') }}</td>
+										<td>{{ $menu->order->price }}</td>
 										<td class="d-flex justify-content-center">
 											<div class="row">
 												<div class="col-6 col-sm-4 col-md-2 col-xl-auto">
-													<a href="#" id='detailBtn' data-toggle="modal" data-target='#myModal' data_value="{{ $menu }}" id="btnModal"
+													<a href="#" id='btnModal' data-toggle="modal" data-target='#myModal' data-id="{{$menu->id}}" data_value="{{ $menu }}" id="btnModal"
 														title="Detail">
 														<i class="far fa-eye text-primary"></i>
 													</a>
@@ -84,7 +78,7 @@
 		</div>
 	</div>
 	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -123,6 +117,23 @@
 				
 			</div>
 		</div>
+	</div> -->
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+							aria-hidden="true">×</span></button>
+					<h4 class="modal-title" id="myModalLabel">Detail</h4>
+				</div>
+				<div class="modal-body">
+				</div>
+				</div>
+				
+			</div>
+		</div>
 	</div>
 
 
@@ -132,6 +143,16 @@
 	<script>
 		
 		document.addEventListener("DOMContentLoaded", function() {
+
+		var table = $('#Example').DataTable();
+		var data_price = table.column(6).data().sum();
+		console.log("🚀 ~ file: index.blade.php ~ line 139 ~ document.addEventListener ~ data_price", data_price)
+		// var sum_price = data_price.reduce(function(a,b) {
+		// 	console.log(typeof parseInt(a))
+		// 	return parseInt(a)+parseInt(b);
+		// })
+		// $("#totals").html("Rp. "+sum_price*1000);
+		// console.log("🚀 ~ file: index.blade.php ~ line 139 ~ varsum_price=data_price.reduce ~ sum_price", sum_price*1000)
 
 		$(document).on('click', '.btnDelete', function() {
 		var form = $(this).closest("form");
@@ -156,11 +177,14 @@
 		});
 		});
 	</script>
-	<script>
+	<!-- <script>
 		$(document).ready(function () {
 			$('#detailBtn').click(function(e) {
+				console.log($('#myModal').modal('show');)
 				console.log("button modal klik",JSON.parse($(this).attr('data_value')))
 				let data = JSON.parse($(this).attr('data_value'));
+				let datas = JSON.parse($(this).attr('data_id'));
+				console.log("🚀 ~ file: index.blade.php ~ line 169 ~ $ ~ datas", datas)
 				$(".modal-body #name").html(data.order.user.name);
 				$(".modal-body #email").html(data.order.user.email);
 				$(".modal-body #pesanan").html(data.menu.name);
@@ -168,6 +192,16 @@
 				$(".modal-body #tables").html(data.order.table.name);
 				$(".modal-body #price").html(data.order.price);
         	});
+		});
+	</script> -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			$(document).on('click', '#btnModal', function() {
+				var id = $(this).attr('data-id');
+				$.get('laporan/' + id, function(data) {
+					$(".modal-body").html(data);
+				});
+			});
 		});
 	</script>
 @endpush
