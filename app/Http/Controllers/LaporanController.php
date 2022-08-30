@@ -46,8 +46,10 @@ class LaporanController extends Controller
 	 * @param  \App\Models\Menu  $menu
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(Menu $menu)
+	public function show($id)
 	{
+		return view('pages.laporan.show',['orders_detail' => OrderDetail::where('id',$id)->with('menu')->with('order')->with('order.user')->with('order.table')->first()]);
+
 	}
 
 	/**

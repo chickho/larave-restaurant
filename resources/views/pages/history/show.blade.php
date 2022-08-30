@@ -16,7 +16,6 @@
 					<td>{{ $item->menu->name }}</td>
 					<td>{{ $item->note }}</td>
 					<td class="text-center">{{ $item->qty }}</td>
-					<td id='user_id' class="text-center"></td>
 					<td class="text-center"><span class="badge @if ($item->status == 'ordered') bg-yellow @elseif($item->status == 'paid') bg-green @elseif($item->status == 'done') bg-blue @endif">{{ $item->status }}</span></td>
 				</tr>
 			@endforeach

@@ -77,10 +77,6 @@
 				</div>
 				<div class="modal-body">
 				</div>
-				<div class="modal-footer">
-					<!-- Rp. {{$orders ?? $orders['price']}} -->
-				<p id='user_id'></p>
-
 				</div>
 				
 			</div>

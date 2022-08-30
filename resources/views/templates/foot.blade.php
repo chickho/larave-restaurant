@@ -25,6 +25,7 @@
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.19/api/sum().js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -50,18 +51,18 @@ document.addEventListener("DOMContentLoaded", function() {
         let maxDateFilter = "";
         let table = $.fn.dataTableExt.afnFiltering.push(
           function(settings, data, dataIndex) {
-            data[7] = new Date(data[7]).getTime();
-            if (typeof data[7] == 'undefined') {
-              data[7] = new Date(data[0]).getTime();
+            data[3] = new Date(data[3]).getTime();
+            if (typeof data[3] == 'undefined') {
+              data[3] = new Date(data[0]).getTime();
             }
               if (minDateFilter && !isNaN(minDateFilter)) {
-                  if (data[7] <= minDateFilter) {
+                  if (data[3] <= minDateFilter) {
                       return false;
                   }
               }
 
               if (maxDateFilter && !isNaN(maxDateFilter)) {
-                  if (data[7] >= maxDateFilter) {
+                  if (data[3] >= maxDateFilter) {
                       return false;
                   }
               }
