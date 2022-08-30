@@ -3,14 +3,9 @@
 	<!-- Page title -->
 	<div class="page-header">
 		<div class="row align-items-center">
-			<div class="col-auto">
-				<h2 class="page-title">
-					History
-				</h2>
-				<ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs">
-					<li class="breadcrumb-item active" aria-current="page"><a href="#">History</a></li>
-				</ol>
-			</div>
+			<h1 class="page-title mt-5 text-center">
+				History
+			</h1>
 		</div>
 	</div>
 	@if (session()->has('success'))
@@ -83,7 +78,9 @@
 				<div class="modal-body">
 				</div>
 				<div class="modal-footer">
-					Rp. {{$orders ?? $orders['price']}}
+					<!-- Rp. {{$orders ?? $orders['price']}} -->
+				<p id='user_id'></p>
+
 				</div>
 				
 			</div>

@@ -4,14 +4,9 @@
 	<!-- Page title -->
 	<div class="page-header">
 		<div class="row align-items-center">
-			<div class="col-auto">
-				<h2 class="page-title">
-					Menu
-				</h2>
-				<ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs">
-					<li class="breadcrumb-item active" aria-current="page"><a href="#">Menu</a></li>
-				</ol>
-			</div>
+				<h1 class="page-title mt-5 text-center">
+					Daftar Menu
+				</h1>
 		</div>
 	</div>
 	@if (session()->has('success'))

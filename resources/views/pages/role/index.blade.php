@@ -4,14 +4,9 @@
 	<!-- Page title -->
 	<div class="page-header">
 		<div class="row align-items-center">
-			<div class="col-auto">
-				<h2 class="page-title">
+				<h1 class="page-title mt-5 text-center">
 					Role
-				</h2>
-				<ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs">
-					<li class="breadcrumb-item active" aria-current="page"><a href="#"><h2>Role</h2></a></li>
-				</ol>
-			</div>
+				</h1>
 		</div>
 	</div>
 	@if (session()->has('success'))
