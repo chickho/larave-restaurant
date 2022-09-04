@@ -71,53 +71,21 @@
 									</tr>
 								@endforeach
 							</tbody>
+							<tfoot>
+								<tr>
+									<th colspan="2" style="text-align:right">Total:</th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+							</tfoot>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Modal -->
-	<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-							aria-hidden="true">×</span></button>
-					<h4 class="modal-title" id="myModalLabel">Detail</h4>
-				</div>
-				<div class="modal-body">
-				<table class="table table-vcenter card-table table-striped">
-					<thead>
-						<tr>
-							<th colspan="2" class="text-center">Name Customer</th>
-							<th>Email</th>
-							<th class="text-center">Pesanan</th>
-							<th class="text-center">Quantity</th>
-							<th class="text-center">Table</th>
-							<th class="text-center">Price</th>
-						</tr>
-					</thead>
-					<tbody id="data_modal">
-						<tr>
-							<td></td>
-							<td id='name'></td>
-							<td id='email'></td>
-							<td id='pesanan'></td>
-							<td id='quantity'></td>
-							<td id='tables' class="text-center"></td>
-							<td id='price' class="text-center"></td>
-						</tr>
-					</tbody>
-				</table>
-				</div>
-				<div class="modal-footer">
-
-				</div>
-				
-			</div>
-		</div>
-	</div> -->
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -141,19 +109,7 @@
 
 @push('scripts')
 	<script>
-		
 		document.addEventListener("DOMContentLoaded", function() {
-
-		var table = $('#Example').DataTable();
-		var data_price = table.column(6).data().sum();
-		console.log("🚀 ~ file: index.blade.php ~ line 139 ~ document.addEventListener ~ data_price", data_price)
-		// var sum_price = data_price.reduce(function(a,b) {
-		// 	console.log(typeof parseInt(a))
-		// 	return parseInt(a)+parseInt(b);
-		// })
-		// $("#totals").html("Rp. "+sum_price*1000);
-		// console.log("🚀 ~ file: index.blade.php ~ line 139 ~ varsum_price=data_price.reduce ~ sum_price", sum_price*1000)
-
 		$(document).on('click', '.btnDelete', function() {
 		var form = $(this).closest("form");
 		event.preventDefault();
@@ -177,23 +133,6 @@
 		});
 		});
 	</script>
-	<!-- <script>
-		$(document).ready(function () {
-			$('#detailBtn').click(function(e) {
-				console.log($('#myModal').modal('show');)
-				console.log("button modal klik",JSON.parse($(this).attr('data_value')))
-				let data = JSON.parse($(this).attr('data_value'));
-				let datas = JSON.parse($(this).attr('data_id'));
-				console.log("🚀 ~ file: index.blade.php ~ line 169 ~ $ ~ datas", datas)
-				$(".modal-body #name").html(data.order.user.name);
-				$(".modal-body #email").html(data.order.user.email);
-				$(".modal-body #pesanan").html(data.menu.name);
-				$(".modal-body #quantity").html(data.qty);
-				$(".modal-body #tables").html(data.order.table.name);
-				$(".modal-body #price").html(data.order.price);
-        	});
-		});
-	</script> -->
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			$(document).on('click', '#btnModal', function() {
