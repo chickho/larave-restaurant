@@ -22,7 +22,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.datatables.net/plug-ins/1.10.19/api/sum().js"></script>
@@ -30,23 +30,51 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
-  let dateData = $('#dateRange').val();
 
-    $('#Example').DataTable({
+   $('#Example').DataTable({
         processing: true,
         stateSave: true,
         order: [],
         dom: "lBfrtip", 
-        buttons: ["copy", "csv", "excel", "pdf", "print"],
-
-
+        buttons: [
+            { extend: 'copy', footer: true },
+            { extend: 'excel', footer: true },
+            { extend: 'csv', footer: true },
+            { extend: 'pdf', footer: true },
+            { extend: 'print', footer: true,},
+        ],
         rowReorder: {
             selector: "td:nth-child(2)",
         },
-
         responsive: true,
+        footerCallback: function(row, data,start,end,display) {
+          var api = this.api();
+
+          var intVal = function (i) {
+                return typeof i === 'string' ? i.replace(/[\$,]/g, '') * 1 : typeof i === 'number' ? i : 0;
+            };
+
+            total = api
+                .column(4)
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+ 
+            pageTotal = api
+                .column(4, { page: 'current' })
+                .data()
+                .reduce(function (a, b) {
+                    return intVal(a) + intVal(b);
+                }, 0);
+ 
+            $(api.column(4).footer()).html('Rp. ' + pageTotal);
+            // $(api.column(4).footer()).html('Rp. ' + pageTotal + ' ( Rp. ' + total + ' total)');
+        }
     });
 
+
+        let dateData = $('#dateRange').val();
         let minDateFilter = "";
         let maxDateFilter = "";
         let table = $.fn.dataTableExt.afnFiltering.push(
@@ -79,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
           // DataTables initialisation
           var table = $('#Example').DataTable();
-
           // Refilter the table
           $("#dateRange").on('change', function() {
               table.draw();
